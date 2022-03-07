@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Event {
     private String name;
     private int size;
@@ -51,6 +53,20 @@ public class Event {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Event)) {
+            return false;
+        }
+        Event other = (Event) obj;
+        return name.equals(other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
     public String toString() {
         return name + '(' +
                 "size=" + size +
@@ -58,4 +74,5 @@ public class Event {
                 ", end=" + end +
                 ')';
     }
+
 }
